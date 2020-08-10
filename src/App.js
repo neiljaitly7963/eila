@@ -5,6 +5,7 @@ import GridAll from './GridAll.js';
 import Navigation from './Navigation';
 import Shortlisted from './Shortlisted'
 import 'tachyons';
+import { cities } from './cities';
 
 class App extends React.Component{
   constructor(){
@@ -16,14 +17,35 @@ class App extends React.Component{
     }
   }
 
-  componentDidMount(){
-    fetch("https://indian-cities-api-nocbegfhqg.now.sh/cities")
-      .then(res => res.json())
-      .then(response => {
-        this.setState({cityArray: response})
+componentDidMount = () => {
+  window.addEventListener('scroll', this.infiniteScroll);
+  this.fetchData(this.state.page);
+}
 
-      }) 
+
+
+  infiniteScroll = () => {
+  // End of the document reached?
+  if (
+    window.innerHeight + document.documentElement.scrollTop
+    === document.documentElement.offsetHeight
+  ) 
+  {  
+    this.fetchData();
   }
+}
+
+fetchData = () => {
+    const temp = []
+    for (var i = this.state.cityArray.length; i < this.state.cityArray.length + 40 ; i++) {
+      temp.push(cities[i])
+    }
+
+    this.setState({
+      cityArray: [...this.state.cityArray,...temp]
+    })
+  }
+
 
   shortlistCity = (event) => {
     let temp = event.target.parentElement.parentElement.childNodes
@@ -32,27 +54,17 @@ class App extends React.Component{
       "State": temp[1].outerText,
       "District": temp[2].outerText
     }
-    
     this.setState({ shortlistedCities: [...this.state.shortlistedCities, tempObject] }, function () {
-    console.log(this.state.shortlistedCities);
   })
   }
 
   deleteCity = (i, event) => {
-    console.log(i)
-    console.log(event)
-
     const cityArray = Object.assign([], this.state.cityArray);
     cityArray.splice(i, 1);
-
-    const shortlistedCities = Object.assign([], this.state.shortlistedCities);
-    shortlistedCities.splice(i, 1);
     this.setState({cityArray:cityArray})
   }
 
   removeShorltisted = (i, event) => {
-
-
     const shortlistedCities = Object.assign([], this.state.shortlistedCities);
     shortlistedCities.splice(i, 1);
     this.setState({shortlistedCities:shortlistedCities})
