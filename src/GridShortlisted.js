@@ -1,6 +1,6 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table'
-
+import Button from 'react-bootstrap/Button'
 const GridShortlisted = ({shortlistedCities, removeShorltisted}) => {
 	return(
         <div id="tableDiv">
@@ -20,7 +20,7 @@ const GridShortlisted = ({shortlistedCities, removeShorltisted}) => {
 					                <td id={"city"}>{city.City}</td>
 					                <td id={"state"}>{city.State}</td>
 					                <td id={"district"}>{city.District}</td>
-					                <td><button onClick={removeShorltisted}>Remove Shortlist</button></td>
+					                <td><Button onClick={removeShorltisted.bind(this, index)}>Remove Shortlist</Button></td>
 		            			</tr>
 							)
 						})
