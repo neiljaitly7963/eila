@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/eila/static/css/main.98ebc7e0.chunk.css",
+    "main.js": "/eila/static/js/main.05626119.chunk.js",
+    "main.js.map": "/eila/static/js/main.05626119.chunk.js.map",
+    "runtime-main.js": "/eila/static/js/runtime-main.9c518d37.js",
+    "runtime-main.js.map": "/eila/static/js/runtime-main.9c518d37.js.map",
+    "static/css/2.3e7f680e.chunk.css": "/eila/static/css/2.3e7f680e.chunk.css",
+    "static/js/2.f06581bc.chunk.js": "/eila/static/js/2.f06581bc.chunk.js",
+    "static/js/2.f06581bc.chunk.js.map": "/eila/static/js/2.f06581bc.chunk.js.map",
+    "index.html": "/eila/index.html",
+    "precache-manifest.36f669cefb6d7e86ebd673528e9ddba3.js": "/eila/precache-manifest.36f669cefb6d7e86ebd673528e9ddba3.js",
+    "service-worker.js": "/eila/service-worker.js",
+    "static/css/2.3e7f680e.chunk.css.map": "/eila/static/css/2.3e7f680e.chunk.css.map",
+    "static/css/main.98ebc7e0.chunk.css.map": "/eila/static/css/main.98ebc7e0.chunk.css.map",
+    "static/js/2.f06581bc.chunk.js.LICENSE.txt": "/eila/static/js/2.f06581bc.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/eila/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9c518d37.js",
+    "static/css/2.3e7f680e.chunk.css",
+    "static/js/2.f06581bc.chunk.js",
+    "static/css/main.98ebc7e0.chunk.css",
+    "static/js/main.05626119.chunk.js"
+  ]
+}
