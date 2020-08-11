@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import GridAll from './GridAll.js';
-import Navigation from './Navigation';
-import Shortlisted from './Shortlisted'
-import Search from './Search'
+import GridAll from './components/GridAll.js';
+import Navigation from './components/Navigation';
+import Shortlisted from './components/Shortlisted'
+import Search from './components/Search'
 import 'tachyons';
-import { cities } from './cities';
+import { cities } from './components/cities';
 
 class App extends React.Component{
   constructor(){
@@ -19,35 +19,32 @@ class App extends React.Component{
     }
   }
 
-componentDidMount = () => {
-  window.addEventListener('scroll', this.infiniteScroll);
-  this.fetchData(this.state.page);
-}
-
-
+  componentDidMount = () => {
+    window.addEventListener('scroll', this.infiniteScroll);
+    this.fetchData(this.state.page);
+  }
 
   infiniteScroll = () => {
-  // End of the document reached?
-  if (
-    window.innerHeight + document.documentElement.scrollTop
-    === document.documentElement.offsetHeight
-  ) 
-  {  
-    this.fetchData();
-  }
-}
-
-fetchData = () => {
-    const temp = []
-    for (var i = this.state.cityArray.length; i < this.state.cityArray.length + 40 ; i++) {
-      temp.push(cities[i])
+    // End of the document reached?
+    if (
+      window.innerHeight + document.documentElement.scrollTop
+      === document.documentElement.offsetHeight
+    ) 
+    {  
+      this.fetchData();
     }
-
-    this.setState({
-      cityArray: [...this.state.cityArray,...temp]
-    })
   }
 
+  fetchData = () => {
+      const temp = []
+      for (var i = this.state.cityArray.length; i < this.state.cityArray.length + 40 ; i++) {
+        temp.push(cities[i])
+      }
+
+      this.setState({
+        cityArray: [...this.state.cityArray,...temp]
+      })
+    }
 
   shortlistCity = (event) => {
     let temp = event.target.parentElement.parentElement.childNodes
@@ -57,7 +54,7 @@ fetchData = () => {
       "District": temp[2].outerText
     }
     this.setState({ shortlistedCities: [...this.state.shortlistedCities, tempObject] }, function () {
-  })
+    })
   }
 
   deleteCity = (i, event) => {
@@ -73,11 +70,11 @@ fetchData = () => {
   }
 
   searchFunction = (event) => {
+    console.log("city")
     this.setState({searchField: event.target.value})
     const filteredCities = cities.filter(city => {
       return city.City.toLowerCase().includes(this.state.searchField.toLowerCase())
     })
-    console.log(filteredCities)
   }
 
   addCity = (cityId, stateId, districtId, event) => {
@@ -92,7 +89,7 @@ fetchData = () => {
     console.log(tempObj)
     console.log(tempCityArray)
     this.setState({cityArray: tempCityArray})
-   }
+  }
 
   onRouteChange = (route) => {
     if(route === 'All'){
@@ -116,14 +113,14 @@ fetchData = () => {
           this.state.page === 'All' ?        
           <div className="App" >
             <Navigation onRouteChange={this.onRouteChange} searchFunction={this.searchFunction}/>
-            <GridAll cities={this.state.cityArray} shortlistCity={this.shortlistCity} deleteCity={this.deleteCity} addCity={this.addCity}/>
+            <GridAll page={this.state.page} cities={this.state.cityArray} shortlistCity={this.shortlistCity} deleteCity={this.deleteCity} addCity={this.addCity}/>
           </div> 
           : 
           this.state.page === 'Shortlisted' ?
           <Shortlisted onRouteChange={this.onRouteChange} shortlistedCities={this.state.shortlistedCities} removeShorltisted={this.removeShorltisted}/>
           :
           <Search onRouteChange={this.onRouteChange} searchFunction={this.searchFunction} filteredCities={filteredCities} deleteCity={this.deleteCity} shortlistCity={this.shortlistCity}>hi</Search>
-  );
+      );
   }
 
 }

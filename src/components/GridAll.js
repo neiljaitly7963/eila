@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
-const GridAll = ({cities, shortlistCity, deleteCity, addCity}) => {
+const GridAll = ({cities, shortlistCity, deleteCity, addCity, page}) => {
 
   const [cityId, setCityId] = React.useState('')
   const [stateId, setStateId] = React.useState('')
@@ -25,25 +25,18 @@ const GridAll = ({cities, shortlistCity, deleteCity, addCity}) => {
               <td><input onChange={event => setDistrictId(event.target.value)}></input></td>
               <td><Button variant="outline-success" onClick={addCity.bind(this, cityId, stateId, districtId)}>Add</Button></td>
             </tr>
-
-
-
-
-
-
-
             {
-		            	cities.map((city, index) => {
-							return(
-								<tr key={index} id={index}>
-					                <td id={"city"}>{city.City}</td>
-					                <td id={"state"}>{city.State}</td>
-					                <td id={"district"}>{city.District}</td>
-					                <td><Button variant="outline-success" onClick={shortlistCity}>Shortlist</Button>    <Button variant="outline-danger" onClick={deleteCity.bind(this, index)}>Delete</Button></td>
-		            			</tr>
-							)
-						})
-					}
+		          cities.map((city, index) => {
+							  return(
+								  <tr key={index} id={index}>
+  					        <td id={"city"}>{city.City}</td>
+  					        <td id={"state"}>{city.State}</td>
+  				          <td id={"district"}>{city.District}</td>
+                    <td><Button variant="outline-success" onClick={shortlistCity}>Shortlist</Button>    <Button variant="outline-danger" onClick={deleteCity.bind(this, index)}>Delete</Button></td>
+		            	</tr>
+							  )
+						  })
+					  }
             </tbody>
           </Table>
         </div>

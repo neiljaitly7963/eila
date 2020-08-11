@@ -7,7 +7,7 @@ const GridShortlisted = ({shortlistedCities, removeShorltisted}) => {
           <Table striped bordered hover size="sm">
             <thead>
               <tr>
-                 <th>City</th>
+                <th>City</th>
                 <th>State</th>
                 <th>District</th>
                 <th>Action</th>
@@ -15,16 +15,16 @@ const GridShortlisted = ({shortlistedCities, removeShorltisted}) => {
             </thead>
             <tbody>{
 		            	shortlistedCities.map((city, index) => {
-							return(
-								<tr key={index} id={index}>
-					                <td id={"city"}>{city.City}</td>
-					                <td id={"state"}>{city.State}</td>
-					                <td id={"district"}>{city.District}</td>
-					                <td><Button variant="outline-danger" onClick={removeShorltisted.bind(this, index)}>Remove Shortlist</Button></td>
-		            			</tr>
-							)
-						})
-					}
+							      return(
+								      <tr key={index} id={index}>
+					              <td id={"city"}>{city.City}</td>
+					              <td id={"state"}>{city.State}</td>
+					              <td id={"district"}>{city.District}</td>
+					              <td><Button variant="outline-danger" onClick={removeShorltisted.bind(this, index)}>Remove Shortlist</Button></td>
+		                  </tr>
+							      )
+						      })
+					 }
             </tbody>
           </Table>
         </div>
