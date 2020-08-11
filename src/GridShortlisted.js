@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 const GridShortlisted = ({shortlistedCities, removeShorltisted}) => {
 	return(
         <div id="tableDiv">
-          <Table striped bordered hover variant="dark">
+          <Table striped bordered hover size="sm">
             <thead>
               <tr>
                  <th>City</th>
@@ -20,7 +20,7 @@ const GridShortlisted = ({shortlistedCities, removeShorltisted}) => {
 					                <td id={"city"}>{city.City}</td>
 					                <td id={"state"}>{city.State}</td>
 					                <td id={"district"}>{city.District}</td>
-					                <td><Button onClick={removeShorltisted.bind(this, index)}>Remove Shortlist</Button></td>
+					                <td><Button variant="outline-danger" onClick={removeShorltisted.bind(this, index)}>Remove Shortlist</Button></td>
 		            			</tr>
 							)
 						})
